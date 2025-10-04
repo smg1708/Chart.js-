@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+
+      body {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .grafico1 {
+        width: 40%;
+      }
+      .grafico2 {
+        width: 40%;
+      }
+
+    </style>
+</head>
+<body>
+
+    <div class="grafico1">
+        <canvas id="myChart1" ></canvas>
+    </div>
+    <div class="grafico2">
+        <canvas id="myChart2"></canvas>
+    </div>
+    
+</body>
+
+<script>
+  const ctx_line = document.getElementById('myChart1');
+  const ctx_bar = document.getElementById('myChart2');
+
+  new Chart(ctx_line, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+          label: 'Temperatura',
+          data: [30, 29, 28, 25, 22, 23],
+          fill: false,
+          tension: 0.1,
+          backgroundColor: "#fe6383",
+          borderColor: "#fe6383"
+        },
+        {
+          label: 'Umidade',
+          data: [80, 82, 80, 85, 80, 83],
+          fill: false,
+          tension: 0.1,
+          backgroundColor: "#37a2ea",
+          borderColor: "#37a2ea"
+        }
+      ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    })
+
+  new Chart(ctx_bar, {
+    type: 'bar',
+    data: {
+      labels: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho'],
+      datasets: [{
+        label: 'Temperatura Média',
+        data: [22, 24, 27, 23, 20, 18],
+        borderWidth: 1,
+        backgroundColor: "#fe6383"
+      },
+      {
+        label: 'Umidade Média',
+        data: [90, 89, 93, 87, 88, 82],
+        borderWidth: 1,
+        backgroundColor: "#37a2ea"
+      }
+    ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+</html>
+
